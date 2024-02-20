@@ -38,6 +38,7 @@ COPY weights /home/appuser/remote_video_track/weights
 COPY yolov5 /home/appuser/remote_video_track/yolov5
 COPY main.py /home/appuser/remote_video_track
 COPY yolov5_tracker.py /home/appuser/remote_video_track
+COPY timer.py /home/appuser/remote_video_track
 COPY requirements.txt /home/appuser/remote_video_track
 
 RUN pip install -r requirements.txt
