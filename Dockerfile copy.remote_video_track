@@ -26,19 +26,16 @@ RUN apt update \
 RUN apt upgrade --no-install-recommends -y openssl tar
 
 # Create working directory
-RUN mkdir -p /home/appuser/remote_video_track
-WORKDIR /home/appuser/remote_video_track
-
-# RUN git clone https://github.com/wgh-z/remote_video_track.git /home/appuser/remote_video_track
-
-COPY processing /home/appuser/remote_video_track/processing
-COPY templates /home/appuser/remote_video_track/templates
-COPY trackers /home/appuser/remote_video_track/trackers
-COPY weights /home/appuser/remote_video_track/weights
-COPY yolov5 /home/appuser/remote_video_track/yolov5
-COPY main.py /home/appuser/remote_video_track
-COPY yolov5_tracker.py /home/appuser/remote_video_track
-COPY requirements.txt /home/appuser/remote_video_track
+RUN mkdir -p /home/appuser/yolov5
+WORKDIR /home/appuser/yolov5
+COPY processing /home/appuser/yolov5/processing
+COPY templates /home/appuser/yolov5/templates
+COPY trackers /home/appuser/yolov5/trackers
+COPY weights /home/appuser/yolov5/weights
+COPY yolov5 /home/appuser/yolov5/yolov5
+COPY main.py /home/appuser/yolov5
+COPY yolov5_tracker.py /home/appuser/yolov5
+COPY requirements.txt /home/appuser/yolov5
 
 RUN pip install -r requirements.txt
 
