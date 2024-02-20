@@ -321,7 +321,7 @@ class Tracker:
                                 f.write(("%g " * len(line)).rstrip() % line + "\n")
 
                         # if self.save_img or self.save_crop or self.view_img:  # Add bbox to image
-                        if id in show_id.keys():  # 显示指定id的目标
+                        if id in show_id.keys() or show_id == {}:  # 显示指定id的目标
                             # if id in show_id or show_id == []:  # 显示指定id的目标
                             c = int(cls)  # integer class
                             id = int(id)  # integer id

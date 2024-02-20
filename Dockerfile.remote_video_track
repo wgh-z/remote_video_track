@@ -1,4 +1,6 @@
-# docker run --rm -it --gpus all --name wsl tracker:2.0.1-cuda11.7-cudnn8-runtime
+# docker build --pull --rm -f "Dockerfile.remote_video_track" -t tracker:2.0.1-11.7-8-runtime .
+
+# docker run -d --gpus all --network=host --name tracker tracker:2.0.1-11.7-8-runtime python main.py
 
 # Start FROM PyTorch image https://hub.docker.com/r/pytorch/pytorch or nvcr.io/nvidia/pytorch:23.03-py3
 FROM pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime

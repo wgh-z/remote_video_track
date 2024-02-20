@@ -7,6 +7,7 @@ import cv2 as cv
 import numpy as np
 from PIL import Image
 from yolov5_tracker import Tracker
+import argparse
 
 
 app = Flask(__name__)
@@ -89,8 +90,8 @@ def doubleleftpointer():
 
 
 def gen():
-    global l_rate, r_rate, show_id
-    weitght = './weights/yolov5m.pt'
+    global l_rate, r_rate, show_id, args
+    weitght = './weights/' + args.weight
     StrongSort = './weights/osnet_x0_25_msmt17.pth'
     imgsz = [640, 640]
     
@@ -138,4 +139,11 @@ def video_feed():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3002, debug=True, threaded=True)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--ip", type=str, default='0.0.0.0', help="ip address")
+    parser.add_argument("--port", type=int, default=3002, help="port number")
+    parser.add_argument("--weight", type=str, default='yolov5m.pt', help="yolov5 weight")
+    args = parser.parse_args()
+
+    print(f'http://{args.ip}:{args.port}')
+    app.run(host=args.ip, port=args.port, debug=True, threaded=True)
